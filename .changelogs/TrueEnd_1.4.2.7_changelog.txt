@@ -2,7 +2,7 @@
 
 ## Removed
 - Removed SleepPopup random event
-  - We just realized it's against Modrinth's and CurseForge's ToS
+  - We just realized it's against Modrinth's and CurseForge's ToS, oops
 - Removed Herobrine
 
 ## Bug Fixes & Technical Improvements
@@ -12,5 +12,9 @@
   - Fixed a bug where you'd be able to avoid the whole thing with offhand
 
 ## Known Bugs
-None that we know of :'D
+- Some ChatReplies such as `sing`* and `28/09/1939`* after version 47.4.4/5 of Forge
+  - Just so we're clear, `28/09/1939` is the date the song "We'll Meet Again" came out
+- Credits music plays server-side, making it so everyone around can hear it
+- On multiplayer, player isn't frozen when on credits screen making them attackable by mobs
+- NoCooldown in BTD making attacks with Better Combat hilariously fast
 Any bugs or requests of mod compatibility, please report to our Discord server!

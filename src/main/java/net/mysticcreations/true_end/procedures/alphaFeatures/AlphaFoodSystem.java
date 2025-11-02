@@ -1,9 +1,8 @@
 package net.mysticcreations.true_end.procedures.alphaFeatures;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
-
+import java.util.concurrent.ConcurrentHashMap;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.player.Player;
@@ -22,8 +21,7 @@ import static net.mysticcreations.true_end.init.Dimensions.BTD;
 
 @Mod.EventBusSubscriber
 public class AlphaFoodSystem {
-    public static Map<Item, Float> FOOD_MAP = new HashMap<>();
-
+    public static final Map<Item, Float> FOOD_MAP = new ConcurrentHashMap<>();
     static {
         FOOD_MAP.put(Items.PORKCHOP, 1.5F);
         FOOD_MAP.put(Items.COOKED_PORKCHOP, 4.0F);
@@ -40,61 +38,47 @@ public class AlphaFoodSystem {
 
     @SubscribeEvent
     public static int onRightClickItem(PlayerInteractEvent.RightClickItem event) {
+        return processInteraction(event);
+    }
+    @SubscribeEvent
+    public static int onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
+        return processInteraction(event);
+    }
+
+    private static int processInteraction(PlayerInteractEvent event) {
         Player player = event.getEntity();
         if (player == null) return 0;
         if (player.level().dimension() != BTD) return 0;
 
         ItemStack stack = event.getItemStack();
-        Float heal = FOOD_MAP.get(stack.getItem());
-        float newHealth = player.getHealth();
+        if (stack.isEmpty()) return 0;
+
+        Item item = stack.getItem();
+        Float heal = FOOD_MAP.get(item);
 
         int consumed = 2;
         if (heal != null) {
-            newHealth += heal;
             consumed = 1;
         } else if (stack.isEdible()) {
-            //Cancel if edible but not any of the listed items
             consumed = 0;
         }
 
         if (consumed == 1) {
+            float newHealth = player.getHealth() + heal;
             if (!healthCheck(player, event)) {
                 stack.shrink(1);
                 player.getInventory().setChanged();
                 float maxHealth = player.getMaxHealth();
                 player.setHealth(Math.min(newHealth, maxHealth));
                 playEatSound(player.level(), player.getX(), player.getY(), player.getZ());
-                event.setCanceled(true);
             } else {
                 consumed = 0;
             }
+            if (event.isCancelable()) event.setCanceled(true);
+        } else if (consumed == 0) {
+            if (event.isCancelable()) event.setCanceled(true);
         }
 
-        if (consumed == 0 && event.isCancelable()) {
-            event.setCanceled(true);
-        }
-        return consumed;
-    }
-
-    @SubscribeEvent
-    public static int onRightClickItem(PlayerInteractEvent.RightClickBlock event) {
-        Player player = event.getEntity();
-        if (player == null) return 0;
-        if (player.level().dimension() != BTD) return 0;
-
-        ItemStack stack = event.getItemStack();
-        Float heal = FOOD_MAP.get(stack.getItem());
-
-        int consumed = 2;
-        if (heal != null) {
-            consumed = 0;
-        } else if (stack.isEdible()) {
-            consumed = 0;
-        }
-
-        if (consumed == 0 && event.isCancelable()) {
-            event.setCanceled(true);
-        }
         return consumed;
     }
 
