@@ -37,7 +37,6 @@ public class Variables {
     public static double entitySpawnChance;
     public static boolean doRandomEvents;
     public static boolean doDaytimeChange;
-    public static boolean doWindowPopups;
     public static boolean doFlashingLights;
     public static boolean showFog;
     public static boolean showCredits;

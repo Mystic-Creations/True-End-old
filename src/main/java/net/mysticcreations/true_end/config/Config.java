@@ -28,7 +28,6 @@ public class Config {
 			case "showCredits" -> Variables.showCredits = (boolean) value;
 			case "showFog" -> Variables.showFog = (boolean) value;
             case "doRandomEvents" -> Variables.doRandomEvents = (boolean) value;
-			case "doWindowPopups" -> Variables.doWindowPopups = (boolean) value;
 			case "doDaytimeChange" -> Variables.doDaytimeChange = (boolean) value;
 			case "clearDreamItems" -> Variables.clearDreamItems = (boolean) value;
 			case "doFlashingLights" -> Variables.doFlashingLights = (boolean) value;

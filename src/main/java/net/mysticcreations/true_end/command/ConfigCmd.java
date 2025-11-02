@@ -81,14 +81,6 @@ public class ConfigCmd {
                         .then(Commands.literal("false")
                             .executes(ctx -> handleBoolean(ctx.getSource(), "doRandomEvents", false))))
 
-                    .then(Commands.literal("doWindowPopups")
-                        .requires(s -> s.hasPermission(4))
-                        .executes(ctx -> getConfig(ctx.getSource(), "doWindowPopups", Variables.doWindowPopups))
-                        .then(Commands.literal("true")
-                            .executes(ctx -> handleBoolean(ctx.getSource(), "doWindowPopups", true)))
-                        .then(Commands.literal("false")
-                            .executes(ctx -> handleBoolean(ctx.getSource(), "doWindowPopups", false))))
-
                     .then(Commands.literal("doFlashingLights")
                         .executes(ctx -> getConfig(ctx.getSource(), "doFlashingLights", Variables.doFlashingLights))
                         .then(Commands.literal("true")

@@ -24,6 +24,7 @@ public class ConfigInit {
         entries.remove("daytimeChangeToggle");
         entries.remove("flashingLights");
         entries.remove("fogToggle");
+        entries.remove("doWindowPopups");
 
         //Create Config
 		entries.putIfAbsent("randomEventChance", 0.005d);
@@ -33,7 +34,6 @@ public class ConfigInit {
 		entries.putIfAbsent("doRandomEvents", true);
         entries.putIfAbsent("doFlashingLights", true);
         entries.putIfAbsent("doDaytimeChange", true);
-		entries.putIfAbsent("doWindowPopups", true);
         entries.putIfAbsent("doChatReplies", true);
 		entries.putIfAbsent("showFog", true);
 		entries.putIfAbsent("showCredits", true);
@@ -42,7 +42,6 @@ public class ConfigInit {
 		Variables.entitySpawnChance = (double) entries.get("entitySpawnChance");
 		Variables.btdConversationDelay = Math.toIntExact(Math.round((double) entries.get("btdConversationDelay")));
 		Variables.doRandomEvents = (boolean) entries.get("doRandomEvents");
-		Variables.doWindowPopups = (boolean) entries.get("doWindowPopups");
 		Variables.showFog = (boolean) entries.get("showFog");
 		Variables.showCredits = (boolean) entries.get("showCredits");
 		Variables.doFlashingLights = (boolean) entries.get("doFlashingLights");

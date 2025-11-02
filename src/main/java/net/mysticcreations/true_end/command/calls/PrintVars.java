@@ -41,7 +41,6 @@ public class PrintVars {
         source.sendSystemMessage(Component.literal("entitySpawnChance: " + Variables.entitySpawnChance));
         source.sendSystemMessage(Component.literal("doRandomEvents: " + Variables.doRandomEvents));
         source.sendSystemMessage(Component.literal("showCredits: " + Variables.showCredits));
-        source.sendSystemMessage(Component.literal("doWindowPopups: " + Variables.doWindowPopups));
         source.sendSystemMessage(Component.literal("showFog: " + Variables.showFog));
         source.sendSystemMessage(Component.literal("doDaytimeChange: " + Variables.doDaytimeChange));
         source.sendSystemMessage(Component.literal("clearDreamItems: " + Variables.clearDreamItems));

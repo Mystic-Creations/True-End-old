@@ -4,7 +4,7 @@ license="MIT"
 
 [[mods]]
 modId="true_end"
-version="1.4.2.6"
+version="${modVersion}"
 displayName="True End"
 displayURL="""
 
@@ -21,14 +21,14 @@ mixinClasses = ["net.mysticcreations.true_end.mixin.Mixins"]
 [[dependencies.true_end]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.20.1]"
+    versionRange="[${minecraftVersion}]"
     ordering="AFTER"
     side="BOTH"
 
 [[dependencies.true_end]]
     modId="terrablender"
     mandatory=true
-    versionRange="[3.0.1.10,)"
+    versionRange="[${terrablenderVersion},)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.true_end]]
