@@ -1,35 +1,5 @@
 **FABRIC PORT IS ON ITS WAY!** (Accidental ToS violation, oops)
 
-## New Mod Loader Support
--
-
-## World Generation
--
-
-## Features
-*(Exclusive to Beyond the Dream)*
--
-*(General)*
--
-
-## Blocks & Building
--
-
-## Items & Tools
--
-
-## Advancements
--
-
-## Entities
--
-
-## Events & Interactions
--
-
-## Localization
--
-
 ## Removed
 - Removed SleepPopup random event
   - We just realized it's against Modrinth's and CurseForge's ToS
