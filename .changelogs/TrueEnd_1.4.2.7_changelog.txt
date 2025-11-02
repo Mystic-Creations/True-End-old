@@ -11,10 +11,12 @@
   - Works with modded food items (aka blocks them)
   - Fixed a bug where you'd be able to avoid the whole thing with offhand
 
-## Known Bugs
+## Known Bugs (Should be fixed in 1.4.3)
 - Some ChatReplies such as `sing`* and `28/09/1939`* after version 47.4.4/5 of Forge
   - Just so we're clear, `28/09/1939` is the date the song "We'll Meet Again" came out
 - Credits music plays server-side, making it so everyone around can hear it
 - On multiplayer, player isn't frozen when on credits screen making them attackable by mobs
 - NoCooldown in BTD making attacks with Better Combat hilariously fast
+- Seeping Reality flashing screen event displaying under JEI/REI/EMI's block list
+
 Any bugs or requests of mod compatibility, please report to our Discord server!
