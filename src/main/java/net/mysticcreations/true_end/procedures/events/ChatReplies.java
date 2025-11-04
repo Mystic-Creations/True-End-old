@@ -1,5 +1,10 @@
 package net.mysticcreations.true_end.procedures.events;
 
+import net.minecraft.core.BlockPos;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.level.Level;
+import net.minecraftforge.registries.ForgeRegistries;
 import net.mysticcreations.true_end.TrueEnd;
 import net.mysticcreations.true_end.network.Variables;
 import net.mysticcreations.true_end.procedures.randomEvents.SoundPlayer;
@@ -17,6 +22,8 @@ import java.util.Locale;
 import java.util.Random;
 
 import static net.mysticcreations.true_end.init.Dimensions.BTD;
+import static net.mysticcreations.true_end.procedures.DimSwapToBTD.BlockPosRandomX;
+import static net.mysticcreations.true_end.procedures.DimSwapToBTD.BlockPosRandomZ;
 import static net.mysticcreations.true_end.procedures.randomEvents.TimeChange.*;
 
 @Mod.EventBusSubscriber
@@ -66,7 +73,6 @@ public class ChatReplies {
             case "voices" -> sendChatReply(world, "<§kUnknown§r> Gods.", delay);
             
             //Easter eggs
-            case "28/09/1939", "09/28/1939" -> meetAgain(player); //Reference to "We'll meet again" by Vera Lynn, with that also Gravity Falls but also fits with the last words said by the voices in the mod
             case "null" -> sendChatReply(world, "<§kUnknown§r> I'm not Null", delay);
             case "the broken script" -> sendChatReply(world, "<§kUnknown§r> Inspiration.", delay);
             case "zarsai", "zarsaivt", "shinhoa", "shinhoaz", "fireydude", "imfireydude", "olt", "one last time", "dario" -> sendChatReply(world, "<SillyMili> <3", 30);
@@ -116,32 +122,16 @@ public class ChatReplies {
             });
         });
     }
-    private static void meetAgain(ServerPlayer player) {
-        ServerLevel world = (ServerLevel) player.level();
-
-        String[] lines = {
-                "§3We'll meet again",
-                "§2Don't know where",
-                "§3Don't know when",
-                "§2But I know we'll meet again",
-                "Some sunny day",
-                "§3Keep smiling through",
-                "§2Just like you",
-                "§3always do",
-                "§2'Til the blue skies chase those dark clouds",
-                "Far away"
-        };
-        int[] delays = { 45, 40, 40, 40, 50, 55, 40, 40, 45, 50 };
-
-        int cumulative = 0;
-        for (int i = 0; i < lines.length; i++) {
-            cumulative += delays[i];
-            int idx = i;
-            TrueEnd.wait(cumulative, () -> sendChatReply(world, lines[idx], 0));
-        }
-    }
     private static void entitySings(LevelAccessor world, Integer delay, ServerPlayer player) {
-        sendChatReply(world, "<§kUnknown§r> 0100110101111001001000000110011001100001011101100110111101110010011010010111010001100101", delay);
-        SoundPlayer.playSound(player, 10, "true_end:daisy_bell");
+        sendChatReply(world, "<§kUnknown§r> 4D79206661766F72697465", delay);
+        Level level = player.level();
+
+        TrueEnd.wait(delay*2, () -> {
+            level.playSound(
+                null,
+                BlockPos.containing(player.getX()+8, player.getY(), player.getZ()-8),
+                ForgeRegistries.SOUND_EVENTS.getValue(ResourceLocation.parse("true_end:daisy_bell")),
+                SoundSource.NEUTRAL, 1, 1);
+        });
     }
 }

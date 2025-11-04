@@ -1,0 +1,19 @@
+**FABRIC PORT IS ON ITS WAY!** (Accidental ToS violation, oops)
+
+## Removed
+- Removed Chat Reply `28/09/1939`*
+- Removed Herobrine
+
+## Bug Fixes & Technical Improvements
+- Fixed leaves texture not loading (#6)
+  - No clue how that happened
+- Fixed being unable to change your spawn point location in BTD (#7)
+- Fixed Chat Reply `sing`* (#9)
+
+## Known Bugs (Should be fixed in 1.4.3)
+- Credits music plays server-side, making it so everyone around can hear it
+- On multiplayer, player isn't frozen when on credits screen making them attackable by mobs
+- NoCooldown in BTD making attacks with Better Combat hilariously fast
+- Seeping Reality flashing screen event displaying under JEI/REI/EMI's block list
+
+Any bugs or requests of mod compatibility, please report to our Discord server!

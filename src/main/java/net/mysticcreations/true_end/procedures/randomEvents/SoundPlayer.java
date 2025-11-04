@@ -53,9 +53,9 @@ public class SoundPlayer {
             }
         }
         if (groundBlock(level, x, y, z) == Blocks.DIRT.get()
-                || groundBlock(level, x, y, z) == Blocks.GRAVEL.get()
-                || groundBlock(level, x, y, z) == DIRT
-                || groundBlock(level, x, y, z) == GRAVEL) {
+            || groundBlock(level, x, y, z) == Blocks.GRAVEL.get()
+            || groundBlock(level, x, y, z) == DIRT
+            || groundBlock(level, x, y, z) == GRAVEL) {
             if (Math.random() < 0.90) {
                 repeatSound(player, 8, "block.gravel.step");
             } else {
@@ -76,9 +76,6 @@ public class SoundPlayer {
                 repeatSound(player, 16, "block.stone.break");
             }
         }
-        if ((player.getY() < 0 || player.level().dimension() == BTD) && Math.random() < 0.00005) {
-            playSound(player, 5, "true_end:daisy_bell");
-        }
     }
 
     public static Block groundBlock(Level level, double x, double y, double z) {
@@ -86,24 +83,6 @@ public class SoundPlayer {
     }
 
     public static void repeatSound(ServerPlayer player, Integer delay, String soundId) {
-        int randomRepeatCount = 3 + (int) (Math.random() * ((9 - 3) + 1));
-        int soundX = BlockPosRandomX / 4;
-        int soundY = 1 + (int) (Math.random() * ((8 - 1) + 1));
-        int soundZ = BlockPosRandomZ / 4;
-        Level level = player.level();
-        if (level.isClientSide()) return;
-
-        for (int index3 = 0; index3 < (randomRepeatCount - 1); index3++) {
-            TrueEnd.wait(delay, () -> {
-                level.playSound(
-                        null,
-                        BlockPos.containing(soundX, soundY, soundZ),
-                        ForgeRegistries.SOUND_EVENTS.getValue(ResourceLocation.parse(soundId)),
-                        SoundSource.NEUTRAL, 1, 1);
-            });
-        }
-    }
-    public static void playSound(ServerPlayer player, Integer delay, String soundId) {
         int soundX = BlockPosRandomX / 4;
         int soundY = 1 + (int) (Math.random() * ((8 - 1) + 1));
         int soundZ = BlockPosRandomZ / 4;
@@ -112,10 +91,10 @@ public class SoundPlayer {
 
         TrueEnd.wait(delay, () -> {
             level.playSound(
-                    null,
-                    BlockPos.containing(soundX, soundY, soundZ),
-                    ForgeRegistries.SOUND_EVENTS.getValue(ResourceLocation.parse(soundId)),
-                    SoundSource.NEUTRAL, 1, 1);
+                null,
+                BlockPos.containing(soundX, soundY, soundZ),
+                ForgeRegistries.SOUND_EVENTS.getValue(ResourceLocation.parse(soundId)),
+                SoundSource.NEUTRAL, 1, 1);
         });
     }
 }
